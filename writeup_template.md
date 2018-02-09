@@ -31,7 +31,7 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 ![alt text][image1]
 
-I then explored different color spaces and found out that YUV color space is working fine for the problem in hand. Then I performed spatial binning on the images and by experimentation found out that even going all the way down to 32 x 32 pixel resolution, the car itself is still clearly identifiable by eye, and this means that the relevant features are still preserved at this resolution and with lesser features. Then I applied color histogram to the different channels of the image and combine them. Then I performed Histogram of Oriented Gradient(HOG) whose parameters such as orientations, pixels_per_cell and cells_per_block are taken by experimenting with the values. Finally I combined the feature vectors obtained from each step into one to be passed to the classifier for training.
+I then explored different color spaces and found out that YCrCb color space is working fine for the problem in hand. Then I performed spatial binning on the images and by experimentation found out that even going all the way down to 32 x 32 pixel resolution, the car itself is still clearly identifiable by eye, and this means that the relevant features are still preserved at this resolution and with lesser features. Then I applied color histogram to the different channels of the image and combine them. Then I performed Histogram of Oriented Gradient(HOG) whose parameters such as orientations, pixels_per_cell and cells_per_block are taken by experimenting with the values. Finally I combined the feature vectors obtained from each step into one to be passed to the classifier for training.
 Extraction of features is described in detail along with comments in `extract_features` function in IPython Notebook file. Below are some visualization of all these steps:
 
 ![alt text][image2]
@@ -52,7 +52,7 @@ The HOG features are calculated for all the three channels and then combined lat
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 Before training the classifier I split the dataset into separate train and test sets to avoid overfitting or improve generalization, randomly shuffle the data set to avoid problems due to ordering of the data, normalize the dataset to avoid individual features or set of features to dominate the response of the classifier. Also I have around 8792 car images and 8968 non car images which are roughly the same, this is important to avoid the problem of classifying everything belonging to the majority class.
-After all these steps, I trained a linear SVM using feature vectors calculated in the above steps and got an accuracy of 98.87%. All the steps of training is described in detail along with the comments in code cell 8 of IPython Notebook.
+After all these steps, I trained a linear SVM using feature vectors calculated in the above steps and got an accuracy of 98.99%. All the steps of training is described in detail along with the comments in code cell 8 of IPython Notebook.
 
 ### Sliding Window Search
 
@@ -64,7 +64,7 @@ After looking at the image height I decided to ignore the top 400 pixels and sta
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on all three scales using YUV 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.
+Ultimately I searched on all three scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.
 
 ![alt text][image6]
 ---
@@ -73,7 +73,7 @@ Ultimately I searched on all three scales using YUV 3-channel HOG features plus 
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
-[Youtube Link](https://youtu.be/yMFfwSorwqo)
+[Youtube Link](https://youtu.be/wMz1v98yi1g)
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 

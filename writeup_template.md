@@ -103,4 +103,20 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+In this project I followed the techniques and recommendations given by Udacity in the classroom lectures. The pipeline worked well on the project video with some false positive detection on the guardrail to the left
+
+#### Potential Shortcomings
+
+One potential shortcoming is when the two cars are very close to each other the current pipeline is overlapping
+
+Another shortcoming is pipeline will most likely fail in case of difficult lighting and environmental conditions
+
+Also oncoming cars as well as distant cars are problematic. In case of distant cars, smaller window scales tend to produce more false positives
+
+#### Possible Improvements
+
+It is possible to improve further the classifier by additional data augmentation or classifier parameters tuning by Grid Search Cross Validation techniques
+
+Multi scale sliding window scanning is done using experimental scales which can be improved by some automated way of calculating scales
+
+The pipeline may fail in difficult lighting conditions which then can be improved further partly by classifier improvement
